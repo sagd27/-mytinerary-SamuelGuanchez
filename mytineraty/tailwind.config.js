@@ -5,8 +5,15 @@ export default {
     './index.html',   
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        navbarfooter:  '#1E201E',
+         fondo:'#ECDFCC',
+        letras: '#697565',
+        letrasNavFooter: '#ECDFCC'
+      },
+    },
   },
+  variants: {},
   plugins: [],
 }
-
