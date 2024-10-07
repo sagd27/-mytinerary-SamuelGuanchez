@@ -51,17 +51,17 @@ function Carrusel(){
 
         return(
                 <>
-                <div className="w-full max-w-4xl mx-auto">
-                <h2 className="text">Popular Mytineraries</h2>
+                <div className="w-full max-w-4xl mx-auto mt-5">
+                <h2 className="md:text-xl">Popular Mytineraries</h2>
                 <div className="relative overflow-hidden">
                   <div className="flex transition-transform ease-out duration-700" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                     {slides.map((slide, index) => (
                       
                       <div key={index} className="w-full flex-shrink-0 flex justify-around">
                         {slide.map((cities, idx) => (
-                          <div key={idx} className="w-1/4 p-2">
-                            <img src={cities.img} alt={cities.name} className="rounded-lg object-cover w-full h-40" />
-                            <p className="text-center mt-2 font-semibold text-letras">{cities.name}</p>
+                          <div key={idx} className="w-1/4 h-[30vh] p-2">
+                            <img src={cities.img} alt={cities.name} className="rounded-lg object-cover w-full h-full" />
+                            <p className="text-center mt-2 font-semibold text-letras object-cover">{cities.name}</p>
                           </div>
                         ))}
                       </div>
