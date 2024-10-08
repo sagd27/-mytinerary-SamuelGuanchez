@@ -44,16 +44,16 @@ function Carrusel() {
 
   return (
     <>
-      <div className="w-full sm:w-[70%] h-auto m-5">
-        <h2 className="md:text-xl text-center">Popular Mytineraries</h2>
+      <div className="w-full sm:w-[70%] h-auto  m-5">
+        <h2 className="md:text-3xl text-center font-bold">Popular Mytineraries</h2>
         <div className="relative overflow-hidden">
           <div className="flex transition-transform ease-out duration-700" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
             {slides.map((slide, i) => (
               <div key={i} className="w-full flex-shrink-0 flex justify-around">
                 {slide.map((city, idx) => (
-                  <div key={idx} className="lg:w-1/4 w-[70%] p-2 m-1">
+                  <div key={idx} className="flex flex-col lg:w-1/4 w-[80%] h-[50vh] p-2 m-1 items-center ">
                     <img src={city.img} alt={city.name} className="rounded-lg object-cover w-full h-[80%] " />
-                    <p className="text-center m-2 font-semibold text-black">{city.name}</p>
+                    <p className=" text-center m-2 p-1/2 w-[30%] rounded-xl font-semibold text-white bg-navbarfooter">{city.name}</p>
                   </div>
                 ))}
               </div>
