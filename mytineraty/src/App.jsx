@@ -7,7 +7,8 @@ const routers = createBrowserRouter([
   {element: <StandartLayout></StandartLayout>,
     children: [
       {path: "/", element:<Home></Home>},
-      {path: "/Cites", element:<Cities></Cities>}
+      {path: "/Home", element:<Home></Home>},
+      {path: "/Cities", element:<Cities></Cities>}
     ]
   },
  

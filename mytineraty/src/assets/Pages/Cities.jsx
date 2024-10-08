@@ -2,6 +2,8 @@ import React from 'react'
 
 export default function Cities() {
   return (
-    <div>Cities</div>
+    <div className='min-h-[70vh]'><p>cities</p>
+        
+    </div>
   )
 }

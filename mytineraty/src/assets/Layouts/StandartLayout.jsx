@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import React, { useState } from "react";
 import { FiMenu } from "react-icons/fi";
@@ -24,25 +24,29 @@ export default function StandartLayout() {
               <p className="text-lg">My Tinerary</p>
             </div>
 
-            {/* Botón de menú en pantallas pequeñas */}
+          
             <div className="md:hidden flex items-center">
               <button onClick={toggleMenu}>
                 <FiMenu className="text-fondo w-10 h-10 m-1" />
               </button>
             </div>
 
-            {/* Contenido del menú: se oculta en pantallas pequeñas y se despliega si el menú está activo */}
+           
             <div className={`md:flex  sm:flex-col md:flex-row items-end md:items-center space-y-2 md:space-y-0 md:space-x-4 ${menu ? 'block' : 'hidden'} md:block`}>
               <ul className="flex flex-col md:flex-row">
-                {links.map((link, idx) => (
-                  <li key={idx} className="m-2">
-                    <a href={link.href} className="hover:underline">{link.name}</a>
+               
+                  <li  className="m-2">
+                        <NavLink className="hover:underline" to={"/Home"}>Home</NavLink>
                   </li>
-                ))}
+                  <li className="m-2">
+                        <NavLink className="hover:underline" to={"/Cities"}>Cities</NavLink>
+
+                  </li>
+        
               </ul>
             </div>
 
-            {/* Botón de usuario */}
+      
             <div className="ml-5">
               <button className="rounded-full border-2 border-current p-2 ml-4 hover:bg-current hover:text-fondo transition-colors duration-300">
                 <FaUser className="w-10 h-5 hover:text-navbarfooter transition-colors duration-300" />
