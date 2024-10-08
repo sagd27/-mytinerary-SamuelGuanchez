@@ -1,30 +1,52 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
-import React from "react";
+import React, { useState } from "react";
+import { FiMenu } from "react-icons/fi";
 
-const links = [{}];
+const links = [
+  { name: "Home", href: "#" },
+  { name: "Cities", href: "../Cities.jsx" }
+];
 
 export default function StandartLayout() {
+  const [menu, setMenu] = useState(false);
+  
+  const toggleMenu = () => {
+    setMenu(!menu);
+  };
+
   return (
     <>
       <div className="flex flex-col min-h-screen">
         <header>
-          <nav className="flex flex-col md:flex-row justify-between items-center w-full h-20 bg-navbarfooter text-letrasNavFooter font-semibold p-4">
+          <nav className="flex flex-col md:flex-row justify-between items-center w-full h-auto bg-navbarfooter text-letrasNavFooter font-semibold p-4">
             <div>
               <p className="text-lg">My Tinerary</p>
             </div>
-            <div className="flex flex-col md:flex-row items-end md:items-center space-y-2 md:space-y-0 md:space-x-4">
-              <a href="#" className="hover:underline">
-                Home
-              </a>
-              <a href="#" className="hover:underline">
-                Cities
-              </a>
-              <div className="ml-5">
-                <button className="rounded-full border-2 border-current p-2 ml-4 hover:bg-current hover:text-fondo transition-colors duration-300">
-                  <FaUser className="w-10 h-5 hover:text-navbarfooter transition-colors duration-300" />
-                </button>
-              </div>
+
+            {/* Botón de menú en pantallas pequeñas */}
+            <div className="md:hidden flex items-center">
+              <button onClick={toggleMenu}>
+                <FiMenu className="text-fondo w-10 h-10 m-1" />
+              </button>
+            </div>
+
+            {/* Contenido del menú: se oculta en pantallas pequeñas y se despliega si el menú está activo */}
+            <div className={`md:flex  sm:flex-col md:flex-row items-end md:items-center space-y-2 md:space-y-0 md:space-x-4 ${menu ? 'block' : 'hidden'} md:block`}>
+              <ul className="flex flex-col md:flex-row">
+                {links.map((link, idx) => (
+                  <li key={idx} className="m-2">
+                    <a href={link.href} className="hover:underline">{link.name}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Botón de usuario */}
+            <div className="ml-5">
+              <button className="rounded-full border-2 border-current p-2 ml-4 hover:bg-current hover:text-fondo transition-colors duration-300">
+                <FaUser className="w-10 h-5 hover:text-navbarfooter transition-colors duration-300" />
+              </button>
             </div>
           </nav>
         </header>

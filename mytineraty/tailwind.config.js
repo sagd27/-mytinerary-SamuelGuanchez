@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         navbarfooter:  '#1E201E',
-         fondo:'#ECDFCC',
+         fondo:'#ecdfccad',
         letras: '#697565',
         letrasNavFooter: '#ECDFCC'
       },
