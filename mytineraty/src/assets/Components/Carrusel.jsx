@@ -44,14 +44,23 @@ function Carrusel() {
 
   return (
     <>
-      <div className="w-full sm:w-[70%] h-auto  m-5">
+      <div className="w-full sm:w-[60%] h-auto  m-5">
         <h2 className="md:text-3xl text-center font-bold">Popular Mytineraries</h2>
+       <div className="relative"> 
+         
+       <button onClick={goToPreviousSlide} className="absolute  left-2 md:-left-6 top-[40%] transform -translate-y-1/2 bg-gray-800 text-white  h-7 w-7 rounded-full ">
+            &#10094;
+          </button>
+          <button onClick={goToNextSlide} className="absolute z-10 right-2 md:-right-6 top-[40%] transform -translate-y-1/2 bg-gray-800 text-white rounded-full  h-7 w-7">
+            &#10095;
+          </button>
+
         <div className="relative overflow-hidden">
           <div className="flex transition-transform ease-out duration-700" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
             {slides.map((slide, i) => (
               <div key={i} className="w-full flex-shrink-0 flex justify-around">
                 {slide.map((city, idx) => (
-                  <div key={idx} className="flex flex-col lg:w-1/4 w-[80%] h-[50vh] p-2 m-1 items-center ">
+                  <div key={idx} className="flex flex-col lg:w-1/4 w-[80%] h-[40vh] p-2 m-1 items-center ">
                     <img src={city.img} alt={city.name} className="rounded-lg object-cover w-full h-[80%] " />
                     <p className=" text-center m-2 p-1/2 w-[30%] rounded-xl font-semibold text-white bg-navbarfooter">{city.name}</p>
                   </div>
@@ -59,13 +68,7 @@ function Carrusel() {
               </div>
             ))}
           </div >
-            
-          <button onClick={goToPreviousSlide} className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
-            &#10094;
-          </button>
-          <button onClick={goToNextSlide} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
-            &#10095;
-          </button>
+         
         </div>
 
         <div className="flex justify-center space-x-2 mt-4">
@@ -77,6 +80,7 @@ function Carrusel() {
             />
           ))}
         </div>
+       </div>
       </div>
     </>
   );

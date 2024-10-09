@@ -12,6 +12,9 @@ export default {
         letras: '#697565',
         letrasNavFooter: '#ECDFCC'
       },
+      fontFamily: {
+        rubik: ['Rubik', 'sans-serif'],
+      },
     },
   },
   variants: {},

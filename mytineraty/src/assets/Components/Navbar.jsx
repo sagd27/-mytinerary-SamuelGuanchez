@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import React from 'react'
 import { FaUser } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
+import logo from "../img/pngwing.com.png"
+
 
 const links = [
         { name: "Home", href: "#" },
@@ -20,9 +22,10 @@ export default function Navbar() {
   return (
         <header>
         <nav className="flex flex-col md:flex-row justify-between items-center w-full h-auto bg-navbarfooter text-letrasNavFooter font-semibold p-4">
-          <div>
+          
+          <div className="flex flex-row justify-between items-center w-full  md:flex-col" >
             <p className="text-lg">My Tinerary</p>
-          </div>
+          
 
         
           <div className="md:hidden flex items-center">
@@ -30,7 +33,7 @@ export default function Navbar() {
               <FiMenu className="text-fondo w-10 h-10 m-1" />
             </button>
           </div>
-
+          </div>
          
           <div className={`md:flex  sm:flex-col md:flex-row items-end md:items-center space-y-2 md:space-y-0 md:space-x-4 ${menu ? 'block' : 'hidden'} md:block`}>
             <ul className="flex flex-col md:flex-row">
