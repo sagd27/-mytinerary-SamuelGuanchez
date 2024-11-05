@@ -1,32 +1,24 @@
 import React, { useState, useEffect } from "react";
 import CityFilter from "./CityFilter";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const CityCards = () => {
-  const [cities, setCities] = useState([]);
-  const [filterValue, setFilterValue] = useState("");
+  
+  const {cities, filterValue} = useSelector(state => state.cityReducer)
 
-  useEffect(() => {
-    const fetchCities = async () => {
-      try {
-        const queryParam = filterValue ? `?name=${filterValue}` : ""; // Agregar parámetro de búsqueda
-        const response = await fetch(`http://localhost:8080/api/cities/all${queryParam}`);
-        const data = await response.json();
-        setCities(data.response);
-      } catch (error) {
-        console.error("Error fetching cities:", error);
-      }
-    };
+  const navigate = useNavigate(); // Inicializa navigate
 
-    fetchCities();
-  }, [filterValue]); // Actualizar cada vez que cambie filterValue
+  const handleViewMore = (city) => {
+    navigate(`/details`, {state: city});
+  };
 
   return (
     <div className="p-4">
-      <CityFilter filterValue={filterValue} setFilterValue={setFilterValue} />
+      <CityFilter />
       <div className="flex flex-wrap justify-around">
         {cities.map((city) => (
-          <div key={city._id} className="w-full sm:w-1/2 lg:w-1/4 m-2">
+          <div key={city._id} className="w-full sm:w-1/2 lg:w-1/4 m-2  transform transition duration-500 hover:scale-105  ">
             <div className="bg-black rounded-lg overflow-hidden shadow-lg">
               <img
                 src={city.photo}
@@ -37,10 +29,11 @@ const CityCards = () => {
                 <h5 className="text-xl font-semibold text-white">
                   {city.name}
                 </h5>
-                <button className="mt-2 bg-blue-800 text-white py-1 px-3 rounded hover:bg-slate-500">
-                  <NavLink className="no-underline" to={"/Details"}>
-                    View More
-                  </NavLink>
+                <button
+                  className="mt-2 bg-blue-800 text-white py-1 px-3 rounded hover:bg-slate-500"
+                  onClick={() => handleViewMore(city)} // Redirigir con el ID de la ciudad
+                >
+                  View More
                 </button>
               </div>
             </div>
@@ -52,3 +45,4 @@ const CityCards = () => {
 };
 
 export default CityCards;
+
